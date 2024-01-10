@@ -1,19 +1,8 @@
-// Import other dependencies and styles
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css'; // Import Tailwind CSS styles
+import './index.css';
 
-function Login() {
-  const [complaintNo, setComplaintNo] = useState('');
-
-  function submitClaim(ev) {
-    ev.preventDefault();
-    console.log("submit");
-    window.location.href = '/dash';
-  }
-
+function App() {
   return (
-  <div className="container flex flex-col items-center justify-center p-8 max-w-screen-2xl max-h-fit">
+    <div className="container flex items-center justify-center p-8 h-screen">
   {/* Header section */}
 
   {/* Main content */}
@@ -31,8 +20,7 @@ function Login() {
   </main>
 
 </div>
-
   );
 }
 
-export default Login;
+export default App;
