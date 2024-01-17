@@ -3,7 +3,6 @@ import ChatBotPage from './Pages/ChatBotPage';
 import Login from './Pages/Login';
 import './App.css'; // Import your CSS file for styling
 import Dashboard from './Pages/Dashboard';
-// import {Route, Routes} from 'react-router-dom';
 import axios from "axios";
 import ComplainForm from './Pages/ComplainForm';
 
@@ -15,10 +14,10 @@ function App() {
   return (
   <>   
     <Routes>
-      <Route index component={Dashboard} />
-      <Route path="/chatbot" component={ChatBotPage} />
-      <Route path="/login" component={Login} />
-      <Route path="/complain" component={ComplainForm} />
+      <Route index element={<Dashboard/>} />
+      <Route path="/chatbot" element={<ChatBotPage/>} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/complain" element={<ComplainForm/>} />
     </Routes>
 
     </>
