@@ -1,7 +1,5 @@
-// Import other dependencies and styles
-import { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+// Login.js
+import React, { useState } from 'react';
 
 const Login = () => {
   const [complaintId, setComplaintId] = useState('');
@@ -17,30 +15,11 @@ const Login = () => {
     console.log('OTP:', otp);
   };
 
-  const handleSendOtp = async () => {
-    try {
-      // Simulate sending a request to the backend to send OTP using Axios
-      const response = await axios.post('/api/send-otp', {
-        mobileNumber,
-      });
-
-      // Check if the request was successful
-      if (response.status === 200) {
-        setIsOtpSent(true);
-        console.log('OTP sent successfully!');
-      } else {
-        // Handle errors or log a message if the OTP sending fails
-        console.error('Failed to send OTP:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Error sending OTP:', error.message);
-    }
-  };
-
-  const handleResendOtp = () => {
-    // Add logic to resend OTP to the provided mobile number
+  const handleSendOtp = () => {
+    // Add logic to send OTP to the provided mobile number
     // For simplicity, let's just log a message for now
-    console.log('Resending OTP to', mobileNumber);
+    console.log('OTP sent to', mobileNumber);
+    setIsOtpSent(true);
   };
 
   return (
@@ -102,22 +81,13 @@ const Login = () => {
               Send OTP
             </button>
           ) : (
-            <div className="flex items-center">
-              <button
-                type="button"
-                onClick={handleResendOtp}
-                className="text-gray-600 bg-white border-0 py-2 px-4 focus:outline-none hover:underline"
-              >
-                Resend OTP
-              </button>
-              <button
-                type="button"
-                onClick={handleLogin}
-                className="ml-4 text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded-md"
-              >
-                Login
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleLogin}
+              className="text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded-md"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>
@@ -126,3 +96,4 @@ const Login = () => {
 };
 
 export default Login;
+
