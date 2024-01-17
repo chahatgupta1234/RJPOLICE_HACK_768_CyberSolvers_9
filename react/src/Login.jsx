@@ -1,7 +1,7 @@
 // Import other dependencies and styles
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css'; // Import Tailwind CSS styles
+
 
 function Login() {
   const [complaintNo, setComplaintNo] = useState('');
