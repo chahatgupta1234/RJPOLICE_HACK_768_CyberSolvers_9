@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-
+const twilio = require('twilio');
 const app = express();
 const port = 3001;
 
@@ -12,6 +12,11 @@ const db = mysql.createConnection({
   password: 'your_database_password',
   database: 'your_database_name',
 });
+
+// Set up Twilio client with your Twilio credentials
+const accountSid = 'AC4d5bd432d344a76c409f592a633b5454';
+const authToken = '5a90eea41e6c964fc7680515ff387d6e';
+const client = twilio(accountSid, authToken);
 
 // Connect to the database
 db.connect((err) => {
@@ -41,17 +46,16 @@ app.post('/api/send-otp', function (req, res) {
   //key
   //HHTZZK231T9P7TH1SAR2E5V7
 
-  try {
+
     // Send the OTP via Twilio SMS
-    await client.messages.create({
+    client.messages.create({
       body: `Your OTP is: ${otp}`,
       to: `+${mobileNumber}`, 
       from: 'your_twilio_phone_number',
     });
 
   console.log(req.body);
-});
-
+  });
 // Route to submit a claim
 app.post('/submit-claim', (req, res) => {
   const { complainantName } = req.body;
