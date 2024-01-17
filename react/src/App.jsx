@@ -17,7 +17,7 @@ function App() {
       <Route index element={<Dashboard/>} />
       <Route path="/chatbot" element={<ChatBotPage/>} />
       <Route path="/login" element={<Login/>} />
-      <Route path="/complain" element={<ComplainForm/>} />
+      <Route path="/register" element={<ComplainForm/>} />
     </Routes>
 
     </>
