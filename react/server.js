@@ -16,7 +16,10 @@ app.use(cors({
 // Create a MySQL connection
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'roor',
+  user: 'root',
+  port: "3006",
+
+  
   password: 'hellomysql',
   database: 'main',
 });
