@@ -4,49 +4,44 @@ import axios from 'axios';
 
 const Form = () => {
   const [formData, setFormData] = useState({
-    fraudType: '',
     firstName: '',
     lastName: '',
     email: '',
-    aadharNumber: '',
-    address: '',
-    pincode: '',
-    city: '',
-    contact: '',
-    complaintText: '',
-    // Fields for hacking
-    complaintId: '',
     mobileNumber: '',
-    otp: '',
-    // Fields for social
-    // ... (Add social fraud fields)
-    // Fields for financial
-    // ... (Add financial fraud fields)
+    dateTime: '',
+    description: '',
+    frauderMobile: '',
+    frauderEmail: '',
+    fraudType: '',
+    typeOfHacking: '',
+    affectedAccountNumber: '',
+    transactionAmount: '',
+    paymentMethod: '',
+    address: '',
+    dob: '',
+    attachments: null,
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, files } = e.target;
+
+    // If the input is a file input (attachments), use files
+    const inputValue = type === 'file' ? files[0] : value;
+
+    setFormData({ ...formData, [name]: inputValue });
   };
 
   const handleFraudTypeChange = (selectedFraudType) => {
     setFormData({
       ...formData,
       fraudType: selectedFraudType,
-      // Reset all fields when fraud type changes
-      firstName: '',
-      lastName: '',
-      email: '',
-      aadharNumber: '',
+      typeOfHacking: '',
+      affectedAccountNumber: '',
+      transactionAmount: '',
+      paymentMethod: '',
       address: '',
-      pincode: '',
-      city: '',
-      contact: '',
-      complaintText: '',
-      complaintId: '',
-      mobileNumber: '',
-      otp: '',
-      // ... (Reset other fraud-specific fields)
+      dob: '',
+      attachments: null,
     });
   };
 
@@ -73,89 +68,8 @@ const Form = () => {
     <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
       <h2 className="text-2xl font-bold mb-4">Complaint Form</h2>
 
-      <div className="mb-4">
-        <label htmlFor="fraudType" className="block text-sm font-medium text-gray-600">
-          Type of Fraud
-        </label>
-        <select
-          id="fraudType"
-          name="fraudType"
-          value={formData.fraudType}
-          onChange={(e) => handleFraudTypeChange(e.target.value)}
-          className="mt-1 p-2 w-full border rounded-md"
-        >
-          <option value="">Select Fraud Type</option>
-          <option value="hacking">Hacking</option>
-          <option value="social">Social</option>
-          <option value="financial">Financial</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      {formData.fraudType === 'hacking' && (
-        <>
-          {/* Fields for Hacking Fraud */}
-          <div className="mb-4">
-            <label htmlFor="complaintId" className="block text-sm font-medium text-gray-600">
-              Complaint ID
-            </label>
-            <input
-              type="text"
-              id="complaintId"
-              name="complaintId"
-              value={formData.complaintId}
-              onChange={handleInputChange}
-              className="mt-1 p-2 w-full border rounded-md"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-600">
-              Mobile Number
-            </label>
-            <input
-              type="tel"
-              id="mobileNumber"
-              name="mobileNumber"
-              value={formData.mobileNumber}
-              onChange={handleInputChange}
-              className="mt-1 p-2 w-full border rounded-md"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="otp" className="block text-sm font-medium text-gray-600">
-              OTP
-            </label>
-            <input
-              type="text"
-              id="otp"
-              name="otp"
-              value={formData.otp}
-              onChange={(e) => setFormData({ ...formData, otp: e.target.value })}
-              className="mt-1 p-2 w-full border rounded-md"
-            />
-          </div>
-        </>
-      )}
-
-      {formData.fraudType === 'social' && (
-        <>
-          {/* Fields for Social Fraud */}
-          {/* ... (Add social fraud fields) */}
-        </>
-      )}
-
-      {formData.fraudType === 'financial' && (
-        <>
-          {/* Fields for Financial Fraud */}
-          {/* ... (Add financial fraud fields) */}
-        </>
-      )}
-
       {/* Common Fields */}
       <div className="grid grid-cols-2 gap-4">
-        {/* Common Personal Information Fields */}
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-600">
             First Name
@@ -170,22 +84,263 @@ const Form = () => {
           />
         </div>
 
-        {/* ... (Add other common fields) */}
+        <div className="mb-4">
+          <label htmlFor="lastName" className="block text-sm font-medium text-gray-600">
+            Last Name
+          </label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
 
-        {/* Complaint Text Field */}
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-600">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-600">
+            Mobile Number
+          </label>
+          <input
+            type="tel"
+            id="mobileNumber"
+            name="mobileNumber"
+            value={formData.mobileNumber}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="dateTime" className="block text-sm font-medium text-gray-600">
+            Date and Time
+          </label>
+          <input
+            type="datetime-local"
+            id="dateTime"
+            name="dateTime"
+            value={formData.dateTime}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
         <div className="col-span-2 mb-4">
-          <label htmlFor="complaintText" className="block text-sm font-medium text-gray-600">
-            Complaint Text
+          <label htmlFor="description" className="block text-sm font-medium text-gray-600">
+            Description
           </label>
           <textarea
-            id="complaintText"
-            name="complaintText"
-            value={formData.complaintText}
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="frauderMobile" className="block text-sm font-medium text-gray-600">
+            Frauder Mobile
+          </label>
+          <input
+            type="tel"
+            id="frauderMobile"
+            name="frauderMobile"
+            value={formData.frauderMobile}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="frauderEmail" className="block text-sm font-medium text-gray-600">
+            Frauder Email
+          </label>
+          <input
+            type="email"
+            id="frauderEmail"
+            name="frauderEmail"
+            value={formData.frauderEmail}
             onChange={handleInputChange}
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
       </div>
+
+      {/* Fraud Type Dropdown */}
+      <div className="mb-4">
+        <label htmlFor="fraudType" className="block text-sm font-medium text-gray-600">
+          Type of Fraud
+        </label>
+        <select
+          id="fraudType"
+          name="fraudType"
+          value={formData.fraudType}
+          onChange={(e) => handleFraudTypeChange(e.target.value)}
+          className="mt-1 p-2 w-full border rounded-md"
+        >
+          <option value="">Select Fraud Type</option>
+          <option value="hacking">Hacking</option>
+          <option value="social">Social</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      {/* Conditional Rendering Based on Fraud Type */}
+      {formData.fraudType === 'hacking' && (
+        <>
+          <div className="mb-4">
+            <label htmlFor="typeOfHacking" className="block text-sm font-medium text-gray-600">
+              Type of Hacking
+            </label>
+            <select
+              id="typeOfHacking"
+              name="typeOfHacking"
+              value={formData.typeOfHacking}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="">Select Type</option>
+              <option value="unauthorizedTransaction">Unauthorized Transaction</option>
+              <option value="creditCard">Credit Card</option>
+              <option value="scam">Scam</option>
+              <option value="otherHacking">Other</option>
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="affectedAccountNumber" className="block text-sm font-medium text-gray-600">
+              Affected Account Number
+            </label>
+            <input
+              type="text"
+              id="affectedAccountNumber"
+              name="affectedAccountNumber"
+              value={formData.affectedAccountNumber}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="transactionAmount" className="block text-sm font-medium text-gray-600">
+              Transaction Amount
+            </label>
+            <input
+              type="text"
+              id="transactionAmount"
+              name="transactionAmount"
+              value={formData.transactionAmount}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-600">
+              Payment Method
+            </label>
+            <select
+              id="paymentMethod"
+              name="paymentMethod"
+              value={formData.paymentMethod}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="">Select Payment Method</option>
+              <option value="creditCard">Credit Card</option>
+              <option value="bankTransfer">Bank Transfer</option>
+              <option value="upi">UPI</option>
+            </select>
+          </div>
+        </>
+      )}
+
+      {formData.fraudType === 'social' && (
+        <>
+          <div className="mb-4">
+            <label htmlFor="fraudType" className="block text-sm font-medium text-gray-600">
+              Fraud Type
+            </label>
+            <select
+              id="fraudType"
+              name="fraudType"
+              value={formData.fraudType}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="">Select Fraud Type</option>
+              <option value="phishing">Phishing</option>
+              <option value="onlineScam">Online Scam</option>
+              <option value="otherSocial">Other</option>
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="address" className="block text-sm font-medium text-gray-600">
+              Address
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={formData.address}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="dob" className="block text-sm font-medium text-gray-600">
+              Date of Birth
+            </label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              value={formData.dob}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="attachments" className="block text-sm font-medium text-gray-600">
+              Attachments (PDF or JPG)
+            </label>
+            <input
+              type="file"
+              id="attachments"
+              name="attachments"
+              accept=".pdf, .jpg, .jpeg"
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+        </>
+      )}
+
+      {formData.fraudType === 'other' && (
+        <>
+          {/* Fields for Other Fraud */}
+          {/* ... (Add other fraud fields) */}
+        </>
+      )}
 
       <button
         type="submit"
