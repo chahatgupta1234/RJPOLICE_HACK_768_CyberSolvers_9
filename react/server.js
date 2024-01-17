@@ -3,17 +3,25 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const twilio = require('twilio');
 const app = express();
+const cors = require('cors');
 const port = 3001;
 
+// check which route to listen to
+app.use(cors({
+  credentials:true,
+  origin: 'http://localhost:5173',
+}));
+
+ 
 // Create a MySQL connection
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'your_database_user',
-  password: 'your_database_password',
-  database: 'your_database_name',
+  user: 'roor',
+  password: 'hellomysql',
+  database: 'main',
 });
 
-// Set up Twilio client with your Twilio credentials
+// Set up Twilio cl   ient with your Twilio credentials
 const accountSid = 'AC4d5bd432d344a76c409f592a633b5454';
 const authToken = '5a90eea41e6c964fc7680515ff387d6e';
 const client = twilio(accountSid, authToken);
@@ -69,7 +77,7 @@ app.post('/submit-claim', (req, res) => {
       return;
     }
 
-    console.log('Claim submitted successfully');
+    console.log('Claim submitted successfully', result);
     res.json({ status: 'Claim submitted successfully' });
   });
 });

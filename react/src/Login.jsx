@@ -18,6 +18,8 @@ const Login = () => {
   };
 
   const handleSendOtp = async () => {
+    // Add logic to send OTP to the provided mobile number
+    // For simplicity, let's just log a message for now
     try {
       // Simulate sending a request to the backend to send OTP using Axios
       const response = await axios.post('/api/send-otp', {
@@ -35,12 +37,8 @@ const Login = () => {
     } catch (error) {
       console.error('Error sending OTP:', error.message);
     }
-  };
+    console.log('OTP sent to', mobileNumber);
 
-  const handleResendOtp = () => {
-    // Add logic to resend OTP to the provided mobile number
-    // For simplicity, let's just log a message for now
-    console.log('Resending OTP to', mobileNumber);
   };
 
   return (
@@ -102,22 +100,13 @@ const Login = () => {
               Send OTP
             </button>
           ) : (
-            <div className="flex items-center">
-              <button
-                type="button"
-                onClick={handleResendOtp}
-                className="text-gray-600 bg-white border-0 py-2 px-4 focus:outline-none hover:underline"
-              >
-                Resend OTP
-              </button>
-              <button
-                type="button"
-                onClick={handleLogin}
-                className="ml-4 text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded-md"
-              >
-                Login
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleLogin}
+              className="text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded-md"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>
@@ -126,3 +115,4 @@ const Login = () => {
 };
 
 export default Login;
+
