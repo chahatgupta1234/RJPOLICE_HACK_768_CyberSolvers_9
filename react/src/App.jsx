@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ChatBotPage from './Pages/ChatBotPage';
 import Login from './Pages/Login';
 import './App.css'; // Import your CSS file for styling
@@ -14,12 +14,12 @@ function App() {
 
   return (
   <>   
-    <Router>
+    <Routes>
       <Route index component={Dashboard} />
       <Route path="/chatbot" component={ChatBotPage} />
       <Route path="/login" component={Login} />
       <Route path="/complain" component={ComplainForm} />
-    </Router>
+    </Routes>
 
     </>
   )
