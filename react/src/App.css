@@ -40,8 +40,8 @@ body{
     border-radius: 7px;
     font-size: large;
 }
-.navbar button:hover{
-  box-shadow: 2px;
+button:hover{
+  box-shadow: 20px;
 
 }
 

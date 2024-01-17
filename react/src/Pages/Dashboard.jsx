@@ -35,7 +35,7 @@ function Dashboard() {
     
 
     <div className="ask-to-query items-center">
-<p style={{ color: 'gray', fontWeight: 'bold', fontSize: '50px', textAlign: 'center' }}>
+<p style={{ color: 'black', fontWeight: 'bold', fontSize: '50px', textAlign: 'center', position:'absolute',left:'70%',top:'70%' }}>
 Ask Any Query
 </p>
 
@@ -43,7 +43,7 @@ Ask Any Query
 <button
 style={{
 textAlign: 'center',
-padding: '10px', // Adjust the padding as needed
+padding: '10px', // Adjust the padding as need70
 backgroundColor: 'black',
 color: 'white',
 top:'500px',
@@ -54,7 +54,7 @@ cursor: 'pointer',
 margin: '10px auto', // Center the button horizontally and adjust the vertical margin
 }}
 >
-<a href="https://youai.ai/ais/4f97ff3c-f783-4a78-b275-dd273be0fd03?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e" rel="noopener noreferrer" style={{textDecoration: 'none',color:'white'}}>
+<a href="https://youai.ai/ais/4f97ff3c-f783-4a78-b275-dd273be0fd03?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e" rel="noopener noreferrer" style={{textDecoration: 'none',color:'white', position:'absolute'}}>
           Get a Quick Guidance
         </a>
 
