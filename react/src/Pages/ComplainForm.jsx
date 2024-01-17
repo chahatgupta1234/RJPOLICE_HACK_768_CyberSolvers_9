@@ -65,11 +65,11 @@ const Form = () => {
   };
 
   return (
-    <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+    <div className="p-6 bg-white rounded-md shadow-md  h-full w-full">
       <h2 className="text-2xl font-bold mb-4">Complaint Form</h2>
 
       {/* Common Fields */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="">
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-600">
             First Name

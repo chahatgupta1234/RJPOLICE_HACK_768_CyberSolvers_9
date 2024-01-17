@@ -3,7 +3,6 @@ import rcover_page from "../assets/rcover_page.jpg";
 
 function Dashboard() {
 
-
   return ( 
     <div>
     <nav className="navbar">
@@ -60,7 +59,7 @@ margin: '10px auto', // Center the button horizontally and adjust the vertical m
 
 </div>
 </div>
-  );
+);
 }
 
 export default Dashboard;
