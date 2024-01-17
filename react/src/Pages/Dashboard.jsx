@@ -52,9 +52,12 @@ borderRadius: '5px',
 cursor: 'pointer',
 margin: '10px auto', // Center the button horizontally and adjust the vertical margin
 }}
-onClick={() => window.location.href = '/chatbot'} // Use onClick to navigate to /chatbot
+// onClick={() => window.location.href = '/chatbot'} // Use onClick to navigate to /chatbot
 >
-Go to Chatbot Page
+<a href="https://youai.ai/ais/4f97ff3c-f783-4a78-b275-dd273be0fd03?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e" rel="noopener noreferrer">
+          Get a Quick Guidance
+        </a>
+
 </button>
 
 <div className=' w-full h-screen items-center justify-center'>
