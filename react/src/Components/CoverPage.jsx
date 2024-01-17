@@ -1,5 +1,5 @@
 import React from 'react';
-import rcover_page from "./assets/rcover_page.jpg"
+import rcover_page from "../assets/rcover_page.jpg"
 
 const CoverPage = () => {
   return (
