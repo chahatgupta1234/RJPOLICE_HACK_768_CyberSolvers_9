@@ -1,46 +1,96 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import HomePage from './HomePage';
+import ChatBotPage from './ChatBotPage';
 import Login from './Login';
-import {Route, Routes} from 'react-router-dom';
-import Dashboard from './Dashboard';
-import axios from "axios";
+import RegisterPage from './RegisterPage';
+import rcover_page from "./assets/rcover_page.jpg";
 
-axios.defaults.baseURL = 'http://localhost:3001';
+import './App.css'; // Import your CSS file for styling
 
-function App() {
-//   return (
-//     <div className="container">
-//      {/* Header section */}
-//       <header>
-//         {/* Logo and title */}
-//         <button>Share</button>
-//       </header>
-
-//       {/* Main content */}
-//       <main>
-//         <h1>Fraud Detection by Rajasthan Police</h1>
-//         <h2>The AI Solution you need to protect from any fraud.</h2>
-//         <button>Open</button>
-
-//         <section>
-//           <h3>Hello everyone! Here is a broad Solution for any type of Mislead or Fraud</h3>
-//           <p>Presented by Rajasthan Police on 1930 Helpline</p>
-//         </section>
-//       </main>
-
-//       {/* Footer */}
-//       <footer>
-//         <p>Rajasthan Police on 1930 Helpline</p>
-//       </footer>
-//     </div>
-//   );
-
-
+const App = () => {
   return (
-    <Routes>
-      <Route index element={<Login/>} />
-      <Route path="/dash" element={<Dashboard/>} />
-    </Routes>
-  )
+    <Router>
+      <div>
+        <nav className="navbar">
+          <ul>
+           
+          </ul>
+          <div className="right-links">
+            <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+              
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+              <li>
+                <Link to="/chatbot">Chatbot</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-}
+        <div className="image-container">
+          <img className='w-[2000px] mx-auto' src={rcover_page} alt='/' />
+        </div>
 
-export default App
+        <div className="ask-to-query">
+  <p style={{ color: 'brown', fontWeight: 'bold', fontSize: '50px', textAlign: 'center' }}>
+    Ask Any Query
+  </p>
+
+
+  <button
+  style={{
+    textAlign: 'center',
+    display: 'block',
+    padding: '10px', // Adjust the padding as needed
+    backgroundColor: 'yellow',
+    color: 'black',
+    
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    margin: '10px auto', // Center the button horizontally and adjust the vertical margin
+  }}
+  onClick={() => window.location.href = '/chatbot'} // Use onClick to navigate to /chatbot
+>
+  Go to Chatbot Page
+</button>
+
+<div className=' w-full h-screen items-center justify-center'>
+  <div className=" w-full h-screen item-center justify-center p-8 rounded shadow-lg flex flex-col border-8 border-pink-600">
+    <div><h1 className="text-4xl font-bold mb-4 text-center">Rajasthan Police</h1></div>
+    <div><h2 className="text-2xl mb-4 py-11 text-center">Need to protect from any fraud.</h2></div>
+    <div className='flex justify-center'>
+    
+    </div>
+    <div>
+    <section className="text-center mt-8">
+      <h3 className="text-lg font-semibold mb-2">Hello everyone! Here is a broad Solution for any type of Mislead or Fraud</h3>
+      <p>Presented by Rajasthan Police on 1930 Helpline</p>
+    </section>
+    </div>
+  </div>
+</div>
+
+</div>
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route path="/chatbot" component={ChatBotPage} />
+          <Route path="/login" component={Login} />
+          
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+
+
