@@ -1,5 +1,7 @@
-// Login.js
-import React, { useState } from 'react';
+// Import other dependencies and styles
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Login = () => {
   const [complaintId, setComplaintId] = useState('');
