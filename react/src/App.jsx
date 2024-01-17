@@ -10,8 +10,8 @@ function App() {
 
   return (
     <Routes>
-      <Route index element={<Login/>} />
-      <Route path="/reg" element={<ComplainForm/>} />
+      {/* <Route  index element={<Login/>} /> */}
+      <Route index element={<ComplainForm/>} />
       <Route path="/dash" element={<Dashboard/>} />
     </Routes>
   )
