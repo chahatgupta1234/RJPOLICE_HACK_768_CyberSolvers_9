@@ -4,10 +4,7 @@ import rcover_page from "../assets/rcover_page.jpg";
 function Dashboard() {
 
   return ( 
-    <div>
-      <div style={{fontFamily:'fantasy',fontSize:'xxx-large',color:'black',position:'fixed', zIndex:1,top:'10px'}}>CyberSolvers
-
-                  </div>
+    <div>  
     <nav className="navbar">
       <div className="right-links">
         <ul>
@@ -31,14 +28,7 @@ function Dashboard() {
       </div>
     </nav>
 
-    
-
     <div className="ask-to-query items-center">
-<p style={{ color: 'white', fontWeight: 'bold', fontSize: '50px', textAlign: 'center', position:'absolute',left:'70%',top:'90%' ,fontSize:'xxxx-large'}}>
-Ask Any Query
-</p>
-
-
 <button
 style={{
 textAlign: 'center',
@@ -59,20 +49,6 @@ position:'absolute',
         </a>
 
 </button>
-
-{/* <div className=' w-full h-screen items-center justify-center'>
-<div className=" w-full h-screen item-center justify-center p-8 rounded shadow-lg flex flex-col border-8 border-pink-600">
-<div><h1 className="text-4xl font-bold mb-4 text-center">Rajasthan Police</h1></div>
-<div><h2 className="text-2xl mb-4 py-11 text-center">Need to protect from any fraud.</h2></div>
-
-<div>
-<section className="text-center mt-8">
-  <h3 className="text-lg font-semibold mb-2">Hello everyone! Here is a broad Solution for any type of Mislead or Fraud</h3>
-  <p>Presented by Rajasthan Police on 1930 Helpline</p>
-</section>
-</div>
-</div>
-</div> */}
 
 </div>
 </div>

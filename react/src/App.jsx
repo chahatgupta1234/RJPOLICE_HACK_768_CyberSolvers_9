@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import ChatBotPage from './Pages/ChatBotPage';
+// import ChatBotPage from './Pages/ChatBotPage';
 import Login from './Pages/Login';
 import './App.css'; // Import your CSS file for styling
 import Dashboard from './Pages/Dashboard';
@@ -15,7 +15,7 @@ function App() {
   <>   
     <Routes>
       <Route index element={<Dashboard/>} />
-      <Route path="/chatbot" element={<ChatBotPage/>} />
+      {/* <Route path="/chatbot" element={<ChatBotPage/>} /> */}
       <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<ComplainForm/>} />
     </Routes>
