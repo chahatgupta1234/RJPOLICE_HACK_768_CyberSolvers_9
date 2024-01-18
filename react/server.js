@@ -121,6 +121,7 @@ app.get('/protected', verifyToken, (req, res) => {
   res.json({ message: 'Protected route', user: req.user });
 });
 
+
 // Additional routes for handling complains, branches, etc. can be added similarly.
 
 // Start the server
