@@ -46,31 +46,50 @@ const Form = () => {
     });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     // Simulate sending a request to the backend to save the complaint data using Axios
+  //     const response = await axios.post('/api/save-complaint', formData);
+
+  //     // Check if the request was successful
+  //     if (response.status === 200) {
+  //       console.log('Complaint data submitted successfully!');
+  //     } else {
+  //       // Handle errors or log a message if the submission fails
+  //       console.error('Failed to submit complaint data:', response.status, response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error submitting complaint data:', error.message);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Simulate sending a request to the backend to save the complaint data using Axios
+      // Replace 'YOUR_BACKEND_ENDPOINT' with the actual endpoint where your backend is expecting the data
       const response = await axios.post('/api/save-complaint', formData);
 
       // Check if the request was successful
       if (response.status === 200) {
         console.log('Complaint data submitted successfully!');
       } else {
-        // Handle errors or log a message if the submission fails
         console.error('Failed to submit complaint data:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error submitting complaint data:', error.message);
     }
   };
+  
 
   return (
-    <div className="w-full p-6 bg-white rounded-md shadow-md flex flex-col">
-      <h2 className="text-3xl font-bold mb-4 pt-4 flex justify-center items-center">Complaint Form</h2>
+    <div className="form-container">
+    <h1 className="form-title">Complaint Form</h1>
+    <form className="complaint-form">
 
       {/* Common Fields */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4  Main">
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-600">
             First Name
@@ -342,16 +361,17 @@ const Form = () => {
           {/* ... (Add other fraud fields) */}
         </>
       )}
-
       <button
         type="submit"
         onClick={handleSubmit}
-        className="text-white bg-blue-500 border-0 py-2 px-4 hover:bg-blue-600 rounded-md flex"
+        className="text-white bg-blue-500 border-0 py-2 px-4 focus:outline-none hover:bg-blue-600 rounded-md"
       >
-       <p className=' text-black bg-amber-400'> Submit Complaint</p>
+        Submit Complaint
       </button>
     </div>
+     
   );
+  
 };
 
 export default Form;
