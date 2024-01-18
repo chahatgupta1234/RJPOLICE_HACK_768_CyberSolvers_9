@@ -20,6 +20,7 @@ const StatusTable = () => {
   }, []);
 
   return (
+    <div className='new'>
     <div className="status-table-container">
       <table>
         <thead>
@@ -39,6 +40,7 @@ const StatusTable = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

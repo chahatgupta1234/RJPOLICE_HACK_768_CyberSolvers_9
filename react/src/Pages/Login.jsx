@@ -45,11 +45,11 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center box">
       <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md MainBox">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
+        <h2 className="text-2xl font-bold mb-4">LOGIN</h2>
 
         <div className="mb-4">
           <label htmlFor="complaintId" className="block text-sm font-medium text-gray-600">
-            Complaint ID
+            COMPLAIN ID
           </label>
           <input
             type="text"
@@ -63,7 +63,7 @@ const Login = () => {
 
         <div className="mb-4">
           <label htmlFor="mobileNumber" className="block text-sm font-medium text-gray-600">
-            Mobile Number
+            PASSWORD
           </label>
           <input
             type="tel"
@@ -98,7 +98,7 @@ const Login = () => {
               onClick={handleSendOtp}
               className="text-white bg-blue-500 border-0 py-2 px-4 focus:outline-none hover:bg-blue-600 rounded-md"
             >
-              Send OTP
+              Submit
             </button>
           ) : (
             <button
@@ -106,7 +106,7 @@ const Login = () => {
               onClick={handleLogin}
               className="text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded-md"
             >
-              Login
+              LOGIN
             </button>
           )}
         </div>
