@@ -1,6 +1,7 @@
 // Form.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import './ComplainForm.css';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -69,7 +70,7 @@ const Form = () => {
       <h2 className="text-3xl font-bold mb-4 pt-4 flex justify-center items-center">Complaint Form</h2>
 
       {/* Common Fields */}
-      <div className=" box-border">
+      <div className="grid grid-cols-2 gap-4">
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-600">
             First Name
