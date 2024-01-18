@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import rcover_page from "../assets/rcover_page.jpg";
 
 function Dashboard() {
 
   return ( 
-    <div>  
+    <div>
+      <div style={{fontFamily:'fantasy',fontSize:'xxx-large',color:'black',position:'fixed', zIndex:1,top:'10px'}}>CyberSolvers
+
+                  </div>
     <nav className="navbar">
       <div className="right-links">
         <ul>
@@ -19,9 +21,8 @@ function Dashboard() {
             <Link to="/register"><button>Register</button></Link>
           </li>
           <li>
-            <a href="https://youai.ai/ais/4f97ff3c-f783-4a78-b275-dd273be0fd03?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e" rel="noopener noreferrer"><button>
-          Chatbot
-          </button>
+            <a href="https://youai.ai/ais/fraud-detection-app-by-rajasthan-police-5ca578b3/use?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e" rel="noopener noreferrer">
+          <button>Chatbot</button>
         </a>
           </li>
         </ul>
@@ -29,22 +30,31 @@ function Dashboard() {
     </nav>
 
     <div className="ask-to-query items-center">
+<p style={{ color: 'white', fontWeight: 'bold', fontSize: '50px', textAlign: 'center', position:'absolute',left:'70%',top:'90%' }}>
+Ask Any Query
+</p>
+
+
+
 <button
 style={{
 textAlign: 'center',
-padding: '10px', // Adjust the padding as need70
-backgroundColor: 'black',
-color: 'white',
-top:'60%',
-left:'75%',
+padding: '7px', // Adjust the padding as need70
+backgroundColor: 'aquamarine',
+color: 'black',
+top:'25%',
+left:'69%',
 border: 'none',
 borderRadius: '7px',
 cursor: 'pointer',
-margin: '10px auto', // Center the button horizontally and adjust the vertical margin
+margin: '7px auto', // Center the button horizontally and adjust the vertical margin
 position:'absolute',
+fontWeight: 'bold',
+width:'25%',
+fontSize:'xx-large',
 }}
 >
-<a href="https://youai.ai/ais/4f97ff3c-f783-4a78-b275-dd273be0fd03?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e"  style={{textDecoration: 'none',color:'white',fontSize:'XX-large'}}>
+<a href="https://youai.ai/ais/4f97ff3c-f783-4a78-b275-dd273be0fd03?draftVersionId=b9d2a37f-fa0b-4526-bd50-770f4da07d5e"  style={{textDecoration: 'none',color:'black'}}>
           GET A GUIDENCE
         </a>
 

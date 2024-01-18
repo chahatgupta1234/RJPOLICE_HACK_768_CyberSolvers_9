@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
+import './login.css'
 
 const Login = () => {
   const [complaintId, setComplaintId] = useState('');
@@ -42,8 +43,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+    <div className="min-h-screen flex items-center justify-center box">
+      <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md MainBox">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
 
         <div className="mb-4">
