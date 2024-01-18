@@ -116,6 +116,91 @@ app.post('/login', (req, res) => {
   });
 });
 
+
+// Endpoint to save complaint data
+app.post('/save-complaint', (req, res) => {
+  const complaintData = req.body;
+
+  // Handle saving data to the appropriate tables based on complaint type (social, hacking, etc.)
+  switch (complaintData.fraudType) {
+    case 'social':
+      saveSocialComplaint(complaintData, res);
+      break;
+    case 'hacking':
+      saveHackingComplaint(complaintData, res);
+      break;
+    
+    default:
+      res.status(400).json({ message: 'Invalid complaint type' });
+  }
+});
+
+// Function to save social complaint data
+function saveSocialComplaint(complaintData, res) {
+  const { address, dateOfFrauds, complainId, dob, attachments } = complaintData;
+
+  const sql = 'INSERT INTO Social (Address, DateOfFrauds, ComplainId) VALUES (?, ?, ?)';
+
+  db.query(sql, [address, dateOfFrauds, complainId], (err, result) => {
+    if (err) {
+      console.error('Error saving social complaint data:', err);
+      res.status(500).json({ message: 'Error saving social complaint data' });
+    } else {
+      saveComplaintCommonData(complaintData, res);
+    }
+  });
+}
+
+// Function to save hacking complaint data
+function saveHackingComplaint(complaintData, res) {
+  const { typeOfHacking, affectedAccountNumber, transactionAmount, paymentMethod, complainId } = complaintData;
+
+  const sql = 'INSERT INTO Hacking (TypeOfHacking, AffectedAccount, TransactionAmount, PaymentMethod, ComplainId) VALUES (?, ?, ?, ?, ?)';
+
+  db.query(sql, [typeOfHacking, affectedAccountNumber, transactionAmount, paymentMethod, complainId], (err, result) => {
+    if (err) {
+      console.error('Error saving hacking complaint data:', err);
+      res.status(500).json({ message: 'Error saving hacking complaint data' });
+    } else {
+      saveComplaintCommonData(complaintData, res);
+    }
+  });
+}
+
+// Function to save common complaint data
+function saveComplaintCommonData(complaintData, res) {
+  const {
+    firstName,
+    lastName,
+    email,
+    mobileNumber,
+    dateTime,
+    description,
+    frauderMobile,
+    frauderEmail,
+    fraudType,
+    attachments,
+  } = complaintData;
+
+  const sql = 'INSERT INTO Complain (FruadTime, ComplainStatus, ComplainDate, ComplainAddress, ComplainDescri, ComplainCity, ComplainPincode, UserId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+
+  // Assuming you have the user ID available, replace 'userId' with the actual user ID
+  const userId = 1;
+
+  db.query(
+    sql,
+    [dateTime, 'active', new Date(), address, description, 'city', 'pincode', userId],
+    (err, result) => {
+      if (err) {
+        console.error('Error saving common complaint data:', err);
+        res.status(500).json({ message: 'Error saving common complaint data' });
+      } else {
+        res.status(200).json({ message: 'Complaint data saved successfully' });
+      }
+    }
+  );
+}
+
 // Example protected route using JWT token
 app.get('/protected', verifyToken, (req, res) => {
   res.json({ message: 'Protected route', user: req.user });

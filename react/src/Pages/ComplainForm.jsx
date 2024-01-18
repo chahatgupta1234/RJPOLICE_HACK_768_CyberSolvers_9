@@ -1,5 +1,5 @@
 // Form.jsx
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Form = () => {
@@ -65,11 +65,11 @@ const Form = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-md shadow-md  h-full w-full">
-      <h2 className="text-2xl font-bold mb-4">Complaint Form</h2>
+    <div className="w-full p-6 bg-white rounded-md shadow-md flex flex-col">
+      <h2 className="text-3xl font-bold mb-4 pt-4 flex justify-center items-center">Complaint Form</h2>
 
       {/* Common Fields */}
-      <div className="">
+      <div className=" box-border">
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-600">
             First Name
@@ -345,9 +345,9 @@ const Form = () => {
       <button
         type="submit"
         onClick={handleSubmit}
-        className="text-white bg-blue-500 border-0 py-2 px-4 focus:outline-none hover:bg-blue-600 rounded-md"
+        className="text-white bg-blue-500 border-0 py-2 px-4 hover:bg-blue-600 rounded-md flex"
       >
-        Submit Complaint
+       <p className=' text-black bg-amber-400'> Submit Complaint</p>
       </button>
     </div>
   );
