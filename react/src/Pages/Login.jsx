@@ -3,6 +3,7 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import './login.css'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [complaintId, setComplaintId] = useState('');
@@ -75,32 +76,10 @@ const Login = () => {
           />
         </div>
 
-        {isOtpSent ? (
-          <div className="mb-4">
-            <label htmlFor="otp" className="block text-sm font-medium text-gray-600">
-              OTP
-            </label>
-            <input
-              type="text"
-              id="otp"
-              name="otp"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              className="mt-1 p-2 w-full border rounded-md"
-            />
-          </div>
-        ) : null}
+        
 
         <div className="flex items-center justify-between">
-          {!isOtpSent ? (
-            <button
-              type="button"
-              onClick={handleSendOtp}
-              className="text-white bg-blue-500 border-0 py-2 px-4 focus:outline-none hover:bg-blue-600 rounded-md"
-            >
-              Submit
-            </button>
-          ) : (
+          
             <button
               type="button"
               onClick={handleLogin}
@@ -108,7 +87,9 @@ const Login = () => {
             >
               LOGIN
             </button>
-          )}
+            <a type='button' className="text-white bg-green-500 border-0 py-2 px-4 focus:outline-none hover:bg-green-600 rounded-md" style={{padding:'5px',margin:'5px'}} ><Link to='/register'>Register Here!</Link></a>
+            
+          
         </div>
       </div>
     </div>
